@@ -9,7 +9,7 @@ http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/
 		<http:listener-connection host="0.0.0.0" port="8081" />
 	</http:listener-config>
 	<flow name="cicd-demoFlow" doc:id="590c695b-7c37-4341-ab81-ecf6eaa80855" >
-		<http:listener doc:name="Listener" doc:id="6b39b2b6-0303-43cf-a98c-efeef4ec5be3" config-ref="HTTP_Listener_config" path="/cicd-demo"/>
+		<http:listener doc:name="Listener" doc:id="6b39b2b6-0303-43cf-a98c-efeef4ec5be3" config-ref="HTTP_Listener_config" path="/cicd-demo-24"/>
 		<ee:transform doc:name="Transform Message" doc:id="2be08ce6-371d-48ae-b976-0010a5db0797" >
 			<ee:message >
 				<ee:set-payload ><![CDATA[%dw 2.0
@@ -20,6 +20,6 @@ output application/json
 }]]></ee:set-payload>
 			</ee:message>
 		</ee:transform>
-		<logger level="INFO" doc:name="Logger" doc:id="eae9db4e-b32e-42fd-aec7-97e7bd108020" />
+		<logger level="INFO" doc:name="Logger" doc:id="eae9db4e-b32e-42fd-aec7-97e7bd108020" message="#[payload]"/>
 	</flow>
 </mule>
